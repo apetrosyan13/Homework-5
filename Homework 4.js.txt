@@ -1,0 +1,99 @@
+Ex1.
+var a = [ 6, 78, "n", 0, 1 ];
+var b = [5];
+var c = [];
+var index = 0;
+function removeItem ( arr ) {
+  arr[index] = arr[index + 1];
+  index++;
+  switch(index < arr.length - 1) {
+    case true:
+      return removeItem( arr );
+    case false:
+    arr.pop();
+    break;
+  }
+  return arr;
+}
+console.log(removeItem(a));//b,c
+Ex2.
+var arr1 = [1, [3, 4, [1, 2]], 10];
+var arr2 = [14, [1, [[[3, []]], 1], 0]];
+function flArray( arr ) {
+   var toString = arr.join(",");
+   var toArr = toString.split(",");
+   for ( i = 0; i < toArr.length; i++ ) {
+     toArr[i] = + toArr[i];
+   }
+    
+    return toArr;
+  }
+    console.log(flArray( arr1 ));
+Ex3.
+var num1 = 14;
+var num2 = 29;
+var num3 = 9999999;
+
+var preresult;
+function sum(num) {
+    var str = String(num);
+    var result = 0;
+    for (var i = 0; i < str.length; i++) {
+        result += Number(str[i]);
+    }
+    if (result > 9) {
+        preresult = result;
+        return sum(preresult);
+    }
+    return result;
+}
+
+console.log(sum(num1));
+Ex4.
+var array = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+var number1 = 3;
+var number2 = -2;
+
+function rotateAnArray(arr, num) {
+    if (num < 0) {
+        num = num + arr.length;
+    }
+    while (num !== 0) {
+        var first = arr.shift();
+        arr.push(first);
+        num--;
+    }
+    return arr;
+}
+console.log(rotateAnArray(array, number1));
+Ex5.
+var obj1 = {
+    a: "1",
+    b: "2",
+};
+var obj2 = {
+    a: "1",
+    b: "2",
+    c: "2",
+};
+var obj3 = {
+    a: "1",
+    b: "2",
+    c: "2",
+    d: "2"
+};
+function inverting(obj) {
+    for (var key in obj) {
+       if (obj.hasOwnProperty(obj[key])) {
+          var x = obj[obj[key]];
+          obj[obj[key]] = [x];
+          obj[obj[key]].push(key);
+     } else {
+            obj[obj[key]] = key;
+     }
+       delete obj[key];
+   }
+    return obj;
+}
+console.log(inverting(obj3));
+Ex6.
